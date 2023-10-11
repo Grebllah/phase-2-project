@@ -3,7 +3,8 @@ import React from "react";
 function Chosen ({ characterChoice }) {
     return  (
         <div id = "chosen">
-            {characterChoice}            
+            {characterChoice}
+                    
         </div>
     )
 }
