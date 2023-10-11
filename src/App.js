@@ -7,6 +7,7 @@ import Chosen from './Chosen'
 function App() {
   const [characterChoice, setCharacterChoice] = useState(null)
   const [characterData, setCharacterData] = useState([])
+  const [characterLore, setCharacterLore] = useState([])
 
   const handleCharChange = (e) => {
     setCharacterChoice(e.target.value)
@@ -19,6 +20,20 @@ function App() {
       setCharacterData(data.data)
     })
   }, [])
+
+  useEffect (()=>{
+    if (!characterChoice) return
+    const URI = encodeURIComponent(`lore:${characterChoice}`)
+
+    fetch (`https://api.scryfall.com/cards/search?q=${URI}`)
+    // fetch(`https://api.scryfall.com/cards/search?order=cmc&q=c%3Ared+pow%3D3`)
+    .then ((res) => res.json())
+    .then ((data)=> {
+      console.log(data)
+      setCharacterLore(data)
+    })
+  }, [characterChoice])
+
 
   return (
     <div className="App">

@@ -6,6 +6,7 @@ return (
     <div>
         <div className='characterSelect'>
             <select id="characterSelect" onChange = {handleCharChange}>
+                <option value="">--</option>
                 {mappedCharacters}
             </select>
         </div>
