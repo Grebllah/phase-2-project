@@ -24,13 +24,11 @@ function App() {
   useEffect (()=>{
     if (!characterChoice) return
     const URI = encodeURIComponent(`lore:${characterChoice}`)
-
     fetch (`https://api.scryfall.com/cards/search?q=${URI}`)
     // fetch(`https://api.scryfall.com/cards/search?order=cmc&q=c%3Ared+pow%3D3`)
     .then ((res) => res.json())
     .then ((data)=> {
-      console.log(data)
-      setCharacterLore(data)
+      setCharacterLore(data.data)
     })
   }, [characterChoice])
 
@@ -52,7 +50,7 @@ function App() {
         </a>
         <div>
           <CharacterOptions characterData = {characterData} handleCharChange = {handleCharChange}></CharacterOptions>
-          <Chosen characterChoice = {characterChoice}></Chosen>
+          <Chosen characterLore = {characterLore} characterChoice = {characterChoice}></Chosen>
         </div>
       </header>
     </div>
