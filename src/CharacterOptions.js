@@ -1,8 +1,10 @@
 import React from 'react';
 
-function CharacterOptions ({ handleCharChange, characterData }) {
-const mappedCharacters = characterData.map((character, i) => <option key = {i} value = {character}> {character} </option>)
-return (
+function CharacterOptions ({ handleCharChange, characterData, excludedTerms }) {
+
+    const filteredCharacters = characterData.filter((character) => excludedTerms.includes(character) === false)
+    const mappedCharacters = filteredCharacters.map((character, i) => <option key = {i} value = {character}> {character} </option>)
+    return (
     <div>
         <div className='characterSelect'>
             <select id="characterSelect" onChange = {handleCharChange}>

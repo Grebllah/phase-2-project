@@ -3,15 +3,25 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import CharacterOptions from './CharacterOptions'
 import Chosen from './Chosen'
+import CardTemplate from './CardTemplate'
 
 function App() {
   const [characterChoice, setCharacterChoice] = useState(null)
   const [characterData, setCharacterData] = useState([])
   const [characterLore, setCharacterLore] = useState([])
+  const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
 
   const handleCharChange = (e) => {
     setCharacterChoice(e.target.value)
   }
+
+  useEffect (()=>{
+    fetch ("https://api.scryfall.com/catalog/planeswalker-types")
+    .then ((res) => res.json())
+    .then ((data)=> {
+      setCharacterData(data.data)
+    })
+  }, [])
 
   useEffect (()=>{
     fetch ("https://api.scryfall.com/catalog/planeswalker-types")
@@ -31,8 +41,8 @@ function App() {
       setCharacterLore(data.data)
     })
   }, [characterChoice])
-
-
+  
+  console.log(characterLore)
   return (
     <div className="App">
       <header className="App-header">
@@ -40,17 +50,11 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="App-title">Magic: The Gathering Lore App</h1>
         <div>
-          <CharacterOptions characterData = {characterData} handleCharChange = {handleCharChange}></CharacterOptions>
+          <CharacterOptions excludedTerms = {excludedTerms} characterData = {characterData} handleCharChange = {handleCharChange}></CharacterOptions>
           <Chosen characterLore = {characterLore} characterChoice = {characterChoice}></Chosen>
+          <CardTemplate></CardTemplate>
         </div>
       </header>
     </div>
