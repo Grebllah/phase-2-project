@@ -12,6 +12,7 @@ function App() {
   const [legendName, setLegendName] = useState("")
   const [legendType, setLegendType] = useState("")
   const [legendText, setLegendText] = useState("")
+  const [legendText2, setLegendText2] = useState("")
   const [legendFlavor, setLegendFlavor] = useState("")
   const [legendCost, setLegendCost] = useState("")
   const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
@@ -33,6 +34,10 @@ function App() {
   const handleTextChange = (e) => {
     e.preventDefault()
     setLegendText(e.target.value)
+  }
+  const handleTextChange2 = (e) => {
+    e.preventDefault()
+    setLegendText2(e.target.value)
   }
 
   const handleFlavorChange = (e) => {
@@ -69,20 +74,35 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://i.pinimg.com/originals/4f/26/a8/4f26a8e799691ee30f46559dde3eb3b8.png" className="App-logo" alt="logo" />
+        <img
+          src="https://i.pinimg.com/originals/4f/26/a8/4f26a8e799691ee30f46559dde3eb3b8.png"
+          className="App-logo"
+          alt="logo"
+        />
         <h1 className="App-title">Magic: The Gathering Lore App</h1>
         <div>
-          <CharacterOptions excludedTerms = {excludedTerms} characterData = {characterData} handleCharChange = {handleCharChange}></CharacterOptions>
+          <CharacterOptions 
+            excludedTerms = {excludedTerms}
+            characterData = {characterData}
+            handleCharChange = {handleCharChange}
+          ></CharacterOptions>
           <Chosen characterLore = {characterLore} characterChoice = {characterChoice}></Chosen>
-          <CardTemplate legendName = {legendName} legendType = {legendType} legendText = {legendText} legendFlavor = {legendFlavor} legendCost = {legendCost}></CardTemplate>
+          <CardTemplate
+            legendName = {legendName}
+            legendType = {legendType}
+            legendText = {legendText}
+            legendText2 = {legendText2}
+            legendFlavor = {legendFlavor}
+            legendCost = {legendCost}
+          ></CardTemplate>
           <CustomCardForm 
             handleNameChange = {handleNameChange}
             handleTypeChange = {handleTypeChange}
             handleTextChange = {handleTextChange}
+            handleTextChange2 = {handleTextChange2}
             handleFlavorChange = {handleFlavorChange}
             handleCostChange = {handleCostChange}
-          >
-          </CustomCardForm>
+          ></CustomCardForm>
         </div>
       </header>
     </div>
