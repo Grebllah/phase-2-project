@@ -1,19 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function CustomCardForm ({ handleNameChange, handleTypeChange, handleTextChange, handleTextChange2, handleFlavorChange, handleCostChange }) {
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("submitted", e)
-    }
-    const [formData, setFormData] = useState({
-        legendName: "",
-        legendType: "",
-        legendText: {
-            descrip1: "",
-            descrip2: ""
-        },
-        flavor: ""
-    })
+function CustomCardForm ({ handleChange, handleSubmit }) {
 
     return (
     <form onSubmit = {handleSubmit}>
@@ -21,19 +8,19 @@ function CustomCardForm ({ handleNameChange, handleTypeChange, handleTextChange,
             <p>Custom Card</p>
         </div>
         <div>
-            Legend's Name: <input type = "text" onChange = {handleNameChange}></input>
-            Legend's Cost: <input type = "text" onChange = {handleCostChange}></input>
-            Legend's Type: <input type = "text" onChange = {handleTypeChange}></input>
+            Legend's Name: <input id = "legendName" type = "text" onChange = {handleChange}></input>
+            Legend's Cost: <input id = "legendCost" type = "text" onChange = {handleChange}></input>
+            Legend's Type: <input id = "legendType" type = "text" onChange = {handleChange}></input>
         </div>
         <div>
             Legend's Card Text: 
             <div>
-                Keywords/First Ability: <input type = "textarea" onChange = {handleTextChange}></input>
-                Second Ability: <input type = "text" onChange = {handleTextChange2}></input>
+                Keywords/First Ability: <input id = "legendText1" type = "text" onChange = {handleChange}></input>
+                Second Ability: <input id = "legendText2" type = "text" onChange = {handleChange}></input>
             </div>
         </div>
         <div>
-            Legend's Flavor: <input type = "text" onChange = {handleFlavorChange}></input>
+            Legend's Flavor: <input id = "legendFlavor" type = "text" onChange = {handleChange}></input>
             <input type="submit"></input>
         </div>
     </form>

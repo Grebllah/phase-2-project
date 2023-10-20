@@ -9,45 +9,24 @@ function App() {
   const [characterChoice, setCharacterChoice] = useState(null)
   const [characterData, setCharacterData] = useState([])
   const [characterLore, setCharacterLore] = useState([])
-  const [legendName, setLegendName] = useState("")
-  const [legendType, setLegendType] = useState("")
-  const [legendText, setLegendText] = useState("")
-  const [legendText2, setLegendText2] = useState("")
-  const [legendFlavor, setLegendFlavor] = useState("")
-  const [legendCost, setLegendCost] = useState("")
+  const [formData, setFormData] = useState({})
   const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
 
   const handleCharChange = (e) => {
     setCharacterChoice(e.target.value)
   }
 
-  const handleNameChange = (e) => {
+  const handleChange = (e) => {
     e.preventDefault()
-    setLegendName(e.target.value)
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    })
   }
 
-  const handleTypeChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setLegendType(e.target.value)
-  }
-
-  const handleTextChange = (e) => {
-    e.preventDefault()
-    setLegendText(e.target.value)
-  }
-  const handleTextChange2 = (e) => {
-    e.preventDefault()
-    setLegendText2(e.target.value)
-  }
-
-  const handleFlavorChange = (e) => {
-    e.preventDefault()
-    setLegendFlavor(e.target.value)
-  }
-
-  const handleCostChange = (e) => {
-    e.preventDefault()
-    setLegendCost(e.target.value)
+    console.log("submitted", formData)
   }
 
   useEffect (()=>{
@@ -69,8 +48,7 @@ function App() {
       setCharacterLore(data.data)
     })
   }, [characterChoice])
-  
-  // console.log(characterLore)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -88,20 +66,16 @@ function App() {
           ></CharacterOptions>
           <Chosen characterLore = {characterLore} characterChoice = {characterChoice}></Chosen>
           <CardTemplate
-            legendName = {legendName}
-            legendType = {legendType}
-            legendText = {legendText}
-            legendText2 = {legendText2}
-            legendFlavor = {legendFlavor}
-            legendCost = {legendCost}
+            legendName = {formData.legendName}
+            legendType = {formData.legendType}
+            legendText = {formData.legendText}
+            legendText2 = {formData.legendText2}
+            legendFlavor = {formData.legendFlavor}
+            legendCost = {formData.legendCost}
           ></CardTemplate>
           <CustomCardForm 
-            handleNameChange = {handleNameChange}
-            handleTypeChange = {handleTypeChange}
-            handleTextChange = {handleTextChange}
-            handleTextChange2 = {handleTextChange2}
-            handleFlavorChange = {handleFlavorChange}
-            handleCostChange = {handleCostChange}
+            handleChange = {handleChange}
+            handleSubmit = {handleSubmit}
           ></CustomCardForm>
         </div>
       </header>
