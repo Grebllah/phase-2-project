@@ -10,6 +10,7 @@ function App() {
   const [characterData, setCharacterData] = useState([])
   const [characterLore, setCharacterLore] = useState([])
   const [formData, setFormData] = useState({})
+  const [legends, setLegends] = useState({})
   const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
 
   const handleCharChange = (e) => {
@@ -26,7 +27,21 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("submitted", formData)
+    fetch("http://localhost:3000/legends", {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "legendName": `${formData.legendName}`,
+            "legendType": `${formData.legendType}`,
+            "legendText": {
+                "descrip1": `${formData.legendText1}`,
+                "descrip2": `${formData.legendText2}`
+            },
+            "flavor": `${formData.flavor}`
+      })
+    })
   }
 
   useEffect (()=>{
@@ -38,16 +53,25 @@ function App() {
   }, [])
 
   useEffect (()=>{
+    fetch ("http://localhost:3000/legends")
+    .then ((res) => res.json())
+    .then ((data)=> {
+      setLegends(data)
+    })
+  }, [])
+
+  useEffect (()=>{
     if (!characterChoice) return
     const URI = encodeURIComponent(`lore:${characterChoice}`)
     console.log("fetch")
     fetch (`https://api.scryfall.com/cards/search?q=${URI}`)
-    // fetch(`https://api.scryfall.com/cards/search?order=cmc&q=c%3Ared+pow%3D3`)
     .then ((res) => res.json())
     .then ((data)=> {
       setCharacterLore(data.data)
     })
   }, [characterChoice])
+
+  console.log(legends)
 
   return (
     <div className="App">
@@ -68,7 +92,7 @@ function App() {
           <CardTemplate
             legendName = {formData.legendName}
             legendType = {formData.legendType}
-            legendText = {formData.legendText}
+            legendText1 = {formData.legendText1}
             legendText2 = {formData.legendText2}
             legendFlavor = {formData.legendFlavor}
             legendCost = {formData.legendCost}

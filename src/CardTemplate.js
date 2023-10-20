@@ -1,6 +1,6 @@
 
 
-function CardTemplate ({ legendName, legendType, legendText, legendText2, legendFlavor, legendCost }) {
+function CardTemplate ({ legendName, legendType, legendText1, legendText2, legendFlavor, legendCost }) {
 return (
     <div className="card-container">
     <div className="card-background">
@@ -15,7 +15,7 @@ return (
         <img src="https://image.ibb.co/kzaLjn/OGW_R.png" id="set-icon" alt="OGW-icon"/>
       </div>
       <div className="frame-text-box">
-        <p className="description ftb-inner-margin">{legendText}</p>
+        <p className="description ftb-inner-margin">{legendText1}</p>
         <p className="description">{legendText2}</p>
         <p className="flavour-text">{legendFlavor}</p>
       </div>

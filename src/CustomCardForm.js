@@ -15,7 +15,7 @@ function CustomCardForm ({ handleChange, handleSubmit }) {
         <div>
             Legend's Card Text: 
             <div>
-                Keywords/First Ability: <input id = "legendText1" type = "text" onChange = {handleChange}></input>
+                Keywords/First Ability: <input id = "legendText1" type = "textarea" onChange = {handleChange}></input>
                 Second Ability: <input id = "legendText2" type = "text" onChange = {handleChange}></input>
             </div>
         </div>

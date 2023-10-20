@@ -1,13 +1,14 @@
 {
-   "legends": [
-        {
-            "legendName": "Oath of Nissa",
-            "legendType": "Enchantment",
-            "legendText": {
-                "descrip1": "When Oath of Nissa enters the battlefield, look at the top three cards of your library. You may reveal a creature, land, or planeswalker card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",
-                "descrip2": "You may spend mana as though it were mana of any color to cast planeswalker spells."
-            },
-            "flavor": "”For the life of every plane, I will keep watch.”"
-        }
-    ]
+  "legends": [
+    {
+      "id": "Oath of Nissa",
+      "legendName": "Oath of Nissa",
+      "legendType": "Enchantment",
+      "legendText": {
+        "descrip1": "When Oath of Nissa enters the battlefield, look at the top three cards of your library. You may reveal a creature, land, or planeswalker card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",
+        "descrip2": "You may spend mana as though it were mana of any color to cast planeswalker spells."
+      },
+      "flavor": "”For the life of every plane, I will keep watch.”"
+    }  
+  ]
 }
