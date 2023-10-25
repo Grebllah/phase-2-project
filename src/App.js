@@ -4,13 +4,14 @@ import CharacterOptions from './CharacterOptions'
 import Chosen from './Chosen'
 import CardTemplate from './CardTemplate'
 import CustomCardForm from './CustomCardForm'
+import CustomLegends from './CustomLegends';
 
 function App() {
   const [characterChoice, setCharacterChoice] = useState(null)
   const [characterData, setCharacterData] = useState([])
   const [characterLore, setCharacterLore] = useState([])
   const [formData, setFormData] = useState({})
-  const [legends, setLegends] = useState({})
+  const [legends, setLegends] = useState([])
   const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
 
   const handleCharChange = (e) => {
@@ -25,9 +26,12 @@ function App() {
     })
   }
 
+  const addLegend = (legend)=>{
+    setLegends([...legends, legend])
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch("http://localhost:3000/legends", {
+    const configObj = {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json',
@@ -39,11 +43,21 @@ function App() {
                 "descrip1": `${formData.legendText1}`,
                 "descrip2": `${formData.legendText2}`
             },
-            "flavor": `${formData.flavor}`
+            "flavor": `${formData.legendFlavor}`
       })
-    })
+    }
+    fetch('http://localhost:3000/legends', configObj)
+      .then(res => res.json())
+      .then(data => addLegend(data))
   }
 
+  const handleLegendDelete = (e) => {
+    console.log(e)
+  }
+
+  const handleLegendClick = (e) => {
+    console.log("legend fill in")
+  }
   useEffect (()=>{
     fetch ("https://api.scryfall.com/catalog/planeswalker-types")
     .then ((res) => res.json())
@@ -71,8 +85,6 @@ function App() {
     })
   }, [characterChoice])
 
-  console.log(legends)
-
   return (
     <div className="App">
       <header className="App-header">
@@ -81,7 +93,7 @@ function App() {
           className="App-logo"
           alt="logo"
         />
-        <h1 className="App-title">Magic: The Gathering Lore App</h1>
+        <h1 className="App-title">Magic: The Gathering Lore and Custom Legend Creation App</h1>
         <div>
           <CharacterOptions 
             excludedTerms = {excludedTerms}
@@ -101,6 +113,7 @@ function App() {
             handleChange = {handleChange}
             handleSubmit = {handleSubmit}
           ></CustomCardForm>
+          <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete} handleLegendClick={handleLegendClick}></CustomLegends>
         </div>
       </header>
     </div>
