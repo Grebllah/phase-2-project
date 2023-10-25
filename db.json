@@ -1,7 +1,7 @@
 {
   "legends": [
     {
-      "id": "Oath of Nissa",
+      "id": "CustomCard Oath of Nissa",
       "legendName": "Oath of Nissa",
       "legendType": "Enchantment",
       "legendText": {
@@ -11,34 +11,14 @@
       "flavor": "”For the life of every plane, I will keep watch.”"
     },
     {
-      "legendName": "test",
-      "legendType": "test",
+      "legendName": "undefined",
+      "legendType": "undefined",
       "legendText": {
-        "descrip1": "test",
-        "descrip2": "test"
+        "descrip1": "undefined",
+        "descrip2": "undefined"
       },
-      "flavor": "test",
-      "id": "HqGAw6m"
-    },
-    {
-      "legendName": "test",
-      "legendType": "test",
-      "legendText": {
-        "descrip1": "test",
-        "descrip2": "test"
-      },
-      "flavor": "test",
-      "id": "2ic8V1n"
-    },
-    {
-      "legendName": "test",
-      "legendType": "test",
-      "legendText": {
-        "descrip1": "test",
-        "descrip2": "test"
-      },
-      "flavor": "test",
-      "id": "OJdmv81"
+      "flavor": "undefined",
+      "id": "JQrXx1Y"
     }
   ]
 }

@@ -22,7 +22,7 @@ function App() {
     e.preventDefault()
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value
+      [e.target.id]: `${e.target.value}`
     })
   }
 
@@ -37,6 +37,7 @@ function App() {
          'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        
         "legendName": `${formData.legendName}`,
             "legendType": `${formData.legendType}`,
             "legendText": {
@@ -48,16 +49,16 @@ function App() {
     }
     fetch('http://localhost:3000/legends', configObj)
       .then(res => res.json())
-      .then(data => addLegend(data))
+      .then(data => {
+        console.log(data)
+        addLegend(data)
+      })
   }
 
   const handleLegendDelete = (e) => {
-    console.log(e)
+    console.dir(e.target)
   }
-
-  const handleLegendClick = (e) => {
-    console.log("legend fill in")
-  }
+  
   useEffect (()=>{
     fetch ("https://api.scryfall.com/catalog/planeswalker-types")
     .then ((res) => res.json())
@@ -113,7 +114,7 @@ function App() {
             handleChange = {handleChange}
             handleSubmit = {handleSubmit}
           ></CustomCardForm>
-          <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete} handleLegendClick={handleLegendClick}></CustomLegends>
+          <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete}></CustomLegends>
         </div>
       </header>
     </div>
