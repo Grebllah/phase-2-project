@@ -11,7 +11,6 @@ function Chosen ({ characterChoice, characterLore }) {
     return  (
         <div>
             <div id = "chosen">
-                {characterChoice}
             </div>
             <div> {mappedArt}
             </div>

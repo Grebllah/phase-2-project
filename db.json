@@ -1,7 +1,7 @@
 {
   "legends": [
     {
-      "id": "CustomCard Oath of Nissa",
+      "id": "CustomCard_Oath_of_Nissa",
       "legendName": "Oath of Nissa",
       "legendType": "Enchantment",
       "legendText": {
@@ -19,6 +19,16 @@
       },
       "flavor": "undefined",
       "id": "JQrXx1Y"
+    },
+    {
+      "legendName": "test",
+      "legendType": "test",
+      "legendText": {
+        "descrip1": "test",
+        "descrip2": "test"
+      },
+      "flavor": "test",
+      "id": "TT_mFQQ"
     }
   ]
 }

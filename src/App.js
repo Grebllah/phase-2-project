@@ -5,18 +5,13 @@ import Chosen from './Chosen'
 import CardTemplate from './CardTemplate'
 import CustomCardForm from './CustomCardForm'
 import CustomLegends from './CustomLegends';
+import ReactDOM from "react-dom/client";
+import Welcome from './Welcome';
+import NavBar from './NavBar';
 
 function App() {
-  const [characterChoice, setCharacterChoice] = useState(null)
-  const [characterData, setCharacterData] = useState([])
-  const [characterLore, setCharacterLore] = useState([])
   const [formData, setFormData] = useState({})
   const [legends, setLegends] = useState([])
-  const excludedTerms = ["Will", "Abian", "Dungeon", "Master", "Duck", "Ersta", "Grist", "Oko"]
-
-  const handleCharChange = (e) => {
-    setCharacterChoice(e.target.value)
-  }
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -58,14 +53,6 @@ function App() {
   const handleLegendDelete = (e) => {
     console.dir(e.target)
   }
-  
-  useEffect (()=>{
-    fetch ("https://api.scryfall.com/catalog/planeswalker-types")
-    .then ((res) => res.json())
-    .then ((data)=> {
-      setCharacterData(data.data)
-    })
-  }, [])
 
   useEffect (()=>{
     fetch ("http://localhost:3000/legends")
@@ -75,20 +62,11 @@ function App() {
     })
   }, [])
 
-  useEffect (()=>{
-    if (!characterChoice) return
-    const URI = encodeURIComponent(`lore:${characterChoice}`)
-    console.log("fetch")
-    fetch (`https://api.scryfall.com/cards/search?q=${URI}`)
-    .then ((res) => res.json())
-    .then ((data)=> {
-      setCharacterLore(data.data)
-    })
-  }, [characterChoice])
-
   return (
     <div className="App">
       <header className="App-header">
+        <NavBar />
+      </header>
         <img
           src="https://i.pinimg.com/originals/4f/26/a8/4f26a8e799691ee30f46559dde3eb3b8.png"
           className="App-logo"
@@ -96,12 +74,6 @@ function App() {
         />
         <h1 className="App-title">Magic: The Gathering Lore and Custom Legend Creation App</h1>
         <div>
-          <CharacterOptions 
-            excludedTerms = {excludedTerms}
-            characterData = {characterData}
-            handleCharChange = {handleCharChange}
-          ></CharacterOptions>
-          <Chosen characterLore = {characterLore} characterChoice = {characterChoice}></Chosen>
           <CardTemplate
             legendName = {formData.legendName}
             legendType = {formData.legendType}
@@ -116,7 +88,6 @@ function App() {
           ></CustomCardForm>
           <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete}></CustomLegends>
         </div>
-      </header>
     </div>
   );
 }

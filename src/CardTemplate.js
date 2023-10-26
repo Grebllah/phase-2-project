@@ -9,7 +9,7 @@ return (
         <h2 className="name">{legendName}</h2>
         <h2 className="cost">{legendCost}</h2>
       </div>
-      <img className="frame-art" src="https://image.ibb.co/fqdLEn/nissa.jpg" alt="nissa art"/>
+      <img className="frame-art" src="https://i.etsystatic.com/35291969/r/il/a00305/3919044989/il_fullxfull.3919044989_pz6j.jpg" alt="nissa art"/>
       <div className="frame-type-line">
         <h1 className="type">Legendary {legendType}</h1>
         <img src="https://image.ibb.co/kzaLjn/OGW_R.png" id="set-icon" alt="OGW-icon"/>
@@ -22,7 +22,7 @@ return (
 
       <div className="frame-bottom-info inner-margin">
         <div className="fbi-left">
-          <p>140/184 R</p>
+          <p>000/000 C</p>
         <p><img className="paintbrush" src="https://image.ibb.co/e2VxAS/paintbrush_white.png" alt="paintbrush icon"/> Wesley Burt</p> 
         </div>
 
