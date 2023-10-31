@@ -1,10 +1,12 @@
 import React from "react";
 
-function CustomLegends ({ legends, handleLegendDelete }){
+function CustomLegends ({ legends, handleLegendDelete, handleLegendLoad }){
     
     const mappedLegends = legends.map((legend) => {
-         return <div key={legend.id} onClick={handleLegendDelete}>
-            {legend.id}
+         return <div key={legend.id} id={legend.id}>
+            <button key={legend.id} id={legend.id} onClick={handleLegendLoad}>{legend.legendName}</button>
+            <button id={legend.id}  onClick={handleLegendDelete}>X</button>
+
          </div> 
     })
     return (

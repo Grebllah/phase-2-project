@@ -8,45 +8,64 @@ import NavBar from './NavBar';
 function App() {
   const [formData, setFormData] = useState({})
   const [legends, setLegends] = useState([])
+  const [fetchReq, setFetchReq] = useState(0)
 
   const handleChange = (e) => {
-    e.preventDefault()
     setFormData({
       ...formData,
       [e.target.id]: `${e.target.value}`
     })
   }
 
-  const addLegend = (legend)=>{
-    setLegends([...legends, legend])
-  }
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     const configObj = {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        
         "legendName": `${formData.legendName}`,
-            "legendType": `${formData.legendType}`,
-            "legendText": {
-                "descrip1": `${formData.legendText1}`,
-                "descrip2": `${formData.legendText2}`
-            },
-            "flavor": `${formData.legendFlavor}`
+        "legendCost": `${formData.legendCost}`,
+        "legendType": `${formData.legendType}`,
+        "legendText": {
+          "descrip1": `${formData.legendText1}`,
+          "descrip2": `${formData.legendText2}`
+        },
+        "flavor": `${formData.legendFlavor}`
       })
     }
     fetch('http://localhost:3000/legends', configObj)
-      .then(res => res.json())
+      // .then(res => res.json())
       .then(data => {
-        addLegend(data)
+        // addLegend(data)
+        setFetchReq(fetchReq + 1)
       })
   }
 
+  const handleLegendLoad = (e) => {
+    console.log(e.target.id)
+    const legendID = e.target.id
+    fetch (`http://localhost:3000/legends/${legendID}`)
+    .then ((res) => res.json())
+    .then((data) => setFormData({
+      legendName: data.legendName || "",
+      legendType: data.legendType || "",
+      legendText1: data.legendText?.descrip1 || "",
+      legendText2: data.legendText?.descrip2 || "",
+      legendFlavor: data.flavor || "",
+      legendCost: data.legendCost || "",
+    }))
+    .then(setFetchReq(fetchReq + 1))
+  }
+  
   const handleLegendDelete = (e) => {
-    console.dir(e.target)
+    const legendID = e.target.id
+    fetch (`http://localhost:3000/legends/${legendID}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+    })
+    .then(setFetchReq(fetchReq + 1))
   }
 
   useEffect (()=>{
@@ -55,7 +74,7 @@ function App() {
     .then ((data)=> {
       setLegends(data)
     })
-  }, [])
+  }, [fetchReq])
 
   return (
     <div className="App">
@@ -76,7 +95,7 @@ function App() {
             legendFlavor = {formData.legendFlavor}
             legendCost = {formData.legendCost}
           ></CardTemplate>
-          <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete}></CustomLegends>
+          <CustomLegends legends = {legends} handleLegendDelete={handleLegendDelete} handleLegendLoad={handleLegendLoad}></CustomLegends>
         </div>
     </div>
   );
