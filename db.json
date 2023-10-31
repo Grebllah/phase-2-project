@@ -9,26 +9,6 @@
         "descrip2": "You may spend mana as though it were mana of any color to cast planeswalker spells."
       },
       "flavor": "”For the life of every plane, I will keep watch.”"
-    },
-    {
-      "legendName": "undefined",
-      "legendType": "undefined",
-      "legendText": {
-        "descrip1": "undefined",
-        "descrip2": "undefined"
-      },
-      "flavor": "undefined",
-      "id": "JQrXx1Y"
-    },
-    {
-      "legendName": "test",
-      "legendType": "test",
-      "legendText": {
-        "descrip1": "test",
-        "descrip2": "test"
-      },
-      "flavor": "test",
-      "id": "TT_mFQQ"
     }
   ]
 }

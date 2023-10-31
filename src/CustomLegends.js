@@ -8,7 +8,10 @@ function CustomLegends ({ legends, handleLegendDelete }){
          </div> 
     })
     return (
-        <div>{mappedLegends}</div>
+        <div className="legends">
+            <h1 className="legendsHeader">Stored Custom Legends:</h1>
+            <div>{mappedLegends}</div>
+        </div>
     )
 }
 

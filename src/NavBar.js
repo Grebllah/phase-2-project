@@ -6,26 +6,28 @@ import "./NavBar.css";
 /* define the NavBar component */
 function NavBar() {
   return (
-    <nav>
-      <NavLink
-        to="/"
-        className="nav-link"
-      >
-        Welcome
-      </NavLink>
-      <NavLink
-        to="/CustomCardCreator"
-        className="nav-link"
-      >
-        Planeswalker Lore
-      </NavLink>
-      <NavLink
-        to="/LorePage"
-        className="nav-link"
-      >
-        Login
-      </NavLink>
-    </nav>
+    <div className="App">
+      <nav>
+        <NavLink
+          to="/"
+          className="nav-link"
+        >
+          Welcome
+        </NavLink>
+        <NavLink
+          to="/CustomCardCreator"
+          className="nav-link"
+        >
+          Custom Legend Creator
+        </NavLink>
+        <NavLink
+          to="/LorePage"
+          className="nav-link"
+        >
+          Planeswalker Lore
+        </NavLink>
+      </nav>
+    </div>
   );
 };
 

@@ -16,7 +16,6 @@ function LorePage(){
     useEffect (()=>{
         if (!characterChoice) return
         const URI = encodeURIComponent(`lore:${characterChoice}`)
-        console.log("fetch")
         fetch (`https://api.scryfall.com/cards/search?q=${URI}`)
         .then ((res) => res.json())
         .then ((data)=> {
@@ -32,9 +31,10 @@ function LorePage(){
         })
       }, [])
     return ( 
-        <div>
-            <header>
+        <div className="App">
+            <header className="App-header">
                 <NavBar></NavBar>
+                <h1 className="pageDescrip">Planeswalker Lore: select a Planeswalker from the list, and see all the cards referencing that Character!</h1>
             </header>
             <CharacterOptions 
             excludedTerms = {excludedTerms}

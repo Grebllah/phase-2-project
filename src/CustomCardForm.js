@@ -3,7 +3,7 @@ import React from "react";
 function CustomCardForm ({ handleChange, handleSubmit }) {
 
     return (
-    <form onSubmit = {handleSubmit}>
+    <form className="pageDescrip" onSubmit = {handleSubmit}>
         <div>
             <p>Custom Card</p>
         </div>

@@ -3,17 +3,17 @@
 .nav-link{
     display: inline-block;
     box-sizing: border-box;
-    width: 60px;
+    width: fit-content;
     padding: 5px;
     margin: 0 6px 6px;
-    background: blue;
+    background-color: burlywood;
     text-decoration: none;
     text-align: center;
     font-size: min(10vw, 15px) ;
-    color: white;
+    color: darkred;
 }
 
 .active {
-    color: red;
+    color: black;
 }
 

@@ -9,10 +9,9 @@ function Chosen ({ characterChoice, characterLore }) {
         else return <img  key={i} src={card.image_uris.normal} alt={card.name}/>
     })
     return  (
-        <div>
+        <div className="App">
             <div id = "chosen">
-            </div>
-            <div> {mappedArt}
+                <div> {mappedArt}</div>
             </div>
         </div>
     )
