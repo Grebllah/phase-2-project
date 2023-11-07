@@ -18,7 +18,6 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    // e.preventDefault()
     const configObj = {
       method: 'POST',
       headers: {

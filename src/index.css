@@ -263,6 +263,9 @@ max-width: 10px;
 
 .legendsHeader {
   background-color: burlywood;
-  border-bottom: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
   border-color: black;
+  display: inline;
+  margin-bottom: 5px;
 }
